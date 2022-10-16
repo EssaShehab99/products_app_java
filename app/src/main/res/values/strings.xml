@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">products_app</string>
+    <string name="error">خطاء</string>
+    <string name="invalid_data">Invalid data</string>
+    <string name="not_validate">ادخال غير صحيح</string>
+
+</resources>
