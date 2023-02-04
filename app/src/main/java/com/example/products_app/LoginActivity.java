@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
          userName=findViewById(R.id.user_name);
           password=findViewById(R.id.password);
         findViewById(R.id.login_btn).setOnClickListener(v -> {
-            if (validate()&& userName.getText().toString().equals("admin") &&password.getText().toString().equals("admin")){
+            if (validate()&& userName.getText().toString().equals("user") &&password.getText().toString().equals("user")){
                 MainActivity.IS_LOGIN=true;
                 setResult(RESULT_OK);
                 finish();

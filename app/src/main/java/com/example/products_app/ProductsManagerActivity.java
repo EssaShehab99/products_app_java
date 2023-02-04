@@ -38,7 +38,7 @@ public class ProductsManagerActivity extends AppCompatActivity {
     String id;
     boolean isEdit = false;
     Product product;
-
+    Button postBTN ;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class ProductsManagerActivity extends AppCompatActivity {
         storageRef = storage.getReference();
         db = FirebaseFirestore.getInstance();
         progressBAR = findViewById(R.id.progress_bar);
+        postBTN = findViewById(R.id.post_btn);
         titleEditText = findViewById(R.id.title_et);
         detailsEditText = findViewById(R.id.details_et);
         numberEditText = findViewById(R.id.number_et);
@@ -72,7 +73,7 @@ public class ProductsManagerActivity extends AppCompatActivity {
         findViewById(R.id.delete_btn).setOnClickListener(v -> {
             deletePost();
         });
-        Button postBTN = findViewById(R.id.post_btn);
+
         postBTN.setText(isEdit ? "تعديل" : "نشر");
         postBTN.setOnClickListener(v -> {
             if (validate()) {
@@ -84,10 +85,12 @@ public class ProductsManagerActivity extends AppCompatActivity {
             imageChooser();
         });
         progressBAR.setVisibility(View.GONE);
+        postBTN.setVisibility(View.VISIBLE);
     }
 
 
     void uploadFile(Uri imageLocaleUrl) {
+        postBTN.setVisibility(View.GONE);
         progressBAR.setVisibility(View.VISIBLE);
         try {
             if (imageLocaleUrl == null) {
@@ -171,6 +174,7 @@ public class ProductsManagerActivity extends AppCompatActivity {
 
     void showMessage(String text) {
         progressBAR.setVisibility(View.GONE);
+        postBTN.setVisibility(View.VISIBLE);
         Snackbar.make(findViewById(android.R.id.content), text, Snackbar.LENGTH_SHORT).show();
     }
 
